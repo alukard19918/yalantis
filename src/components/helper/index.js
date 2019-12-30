@@ -3,6 +3,29 @@ export const LIST_MONTH = [
     "July", "August", "September", "October", "November", "December"
 ];
 
+export function isDate(date) {
+    return (new Date(date) !== "Invalid Date" && !isNaN(new Date(date)));
+}
+
+export function getListObjects(response) {
+    let listUsersToState = [];
+    let usersByMonth = getUsersByMonthList();
+
+    response.map(user => {
+        if (isDate(user.dob)) {
+            let month = Number(user.dob.substr(5, 2));
+            const monthIndex = month - 1;
+
+            listUsersToState.push(user);
+            usersByMonth[monthIndex]['count']++;
+            usersByMonth[monthIndex]['children'].push(user);
+        }
+
+        return user;
+    });
+
+    return {listUsersToState, usersByMonth}
+}
 
 export function getCssClassName(count) {
     let listCounterAndCssClassName = {
@@ -24,4 +47,19 @@ export function getCssClassName(count) {
     }
 
     return listCounterAndCssClassName[count];
+}
+
+export function getUsersByMonthList() {
+    const usersByMonth = {};
+
+    for (let i = 0; i <= 11; i++) {
+        usersByMonth[i] = {
+            children: [],
+            className: '',
+            count: 0,
+            monthName: LIST_MONTH[i],
+        };
+    }
+
+    return usersByMonth;
 }

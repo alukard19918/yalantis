@@ -1,21 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import ListItem from "./ListItem";
+import LisstItem from './ListItem';
 
 import './style.css';
 
 const ListItems = ({items, handlerOnMouseOver}) => {
     return (
-        <ul
-            onMouseOut={() => {
-                setTimeout(() => {
-                    console.log(123)
-                }, 2000);
-            }}
-        >
+        <ul>
             {
                 Object.keys(items).map(monthIndex => (
-                    <ListItem
+                    <LisstItem
                         monthData={items[monthIndex]}
                         handlerOnMouseOver={handlerOnMouseOver}
                         key={monthIndex}
@@ -25,6 +20,11 @@ const ListItems = ({items, handlerOnMouseOver}) => {
         </ul>
     );
 
+};
+
+ListItems.propTypes = {
+    items: PropTypes.object.isRequired,
+    handlerOnMouseOver: PropTypes.func.isRequired,
 };
 
 export default ListItems;

@@ -1,4 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+import Item from "./Item";
 
 import './style.css';
 
@@ -17,18 +20,16 @@ const ListUsers = ({users}) => {
             <tbody>
             {
                 users.map((user, key) => (
-                    <tr key={key++}>
-                        <td>{key}</td>
-                        <td>{user.id}</td>
-                        <td>{user.firstName}</td>
-                        <td>{user.lastName}</td>
-                        <td>{user.dob}</td>
-                    </tr>
+                   <Item user={user} key={key} position={++key} />
                 ))
             }
             </tbody>
         </table>
     );
+};
+
+ListUsers.propTypes = {
+    users: PropTypes.array.isRequired,
 };
 
 export default ListUsers;

@@ -1,9 +1,12 @@
 table {
-    margin: 0 auto;
+    margin: 20px auto;
     border: 1px solid black; /* Рамка вокруг таблицы */
     border-collapse: separate; /* Способ отображения границы */
-    width: 900px; /* Ширина таблицы */
+    width: 870px; /* Ширина таблицы */
     border-spacing: 0; /* Расстояние между ячейками */
+    overflow: scroll;
+    height: 200px;
+    max-height: 200px;
 }
 
 table tbody td, table thead th {
