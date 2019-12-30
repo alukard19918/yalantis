@@ -1,0 +1,12 @@
+table {
+    margin: 0 auto;
+    border: 1px solid black; /* Рамка вокруг таблицы */
+    border-collapse: separate; /* Способ отображения границы */
+    width: 900px; /* Ширина таблицы */
+    border-spacing: 0; /* Расстояние между ячейками */
+}
+
+table tbody td, table thead th {
+    border: 0.5px solid black;
+    text-align: center;
+}
